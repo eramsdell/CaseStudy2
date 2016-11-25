@@ -1,22 +1,29 @@
----
-title: "Question2"
-author: "Elizabeth Ramsdell"
-date: "November 25, 2016"
-output: 
-  html_document:
-    keep_md: true
-  
----
+# Question2
+Elizabeth Ramsdell  
+November 25, 2016  
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
+
 
 ## Code
 
-```{r}
+
+```r
 library(tseries)
+```
+
+```
+## Warning: package 'tseries' was built under R version 3.3.2
+```
+
+```r
 Data <-get.hist.quote("adp", quote="Close")
+```
+
+```
+## time series ends   2016-11-23
+```
+
+```r
 DataRet <- log(lag(Data)) - log(Data)
 DataVol <- sd(DataRet) * sqrt(250) * 100
 vol <- function(d,logrets){
@@ -33,16 +40,17 @@ sqrt(varlist)
 Volest <- vol(10,DataRet)
 Volest2 <- vol(30, DataRet)
 Volest3 <- vol(100,DataRet)
-
 ```
 
 ##Plots
 
-```{r}
+
+```r
 plot(Volest, type="l")
 lines(Volest2, type = "l", col = "blue")
 lines(Volest3, type = "l", col = "red")
-
 ```
+
+![](Question2_files/figure-html/unnamed-chunk-2-1.png)<!-- -->
 
 
